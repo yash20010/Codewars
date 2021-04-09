@@ -1,12 +1,14 @@
-// For a given 2D vector described by cartesian coordinates of its initial point and terminal point in the following format:
+// Create a function that takes a string and returns that string with the first half lowercased and the last half uppercased.
 
-// [[x1, y1], [x2, y2]]
-// Your function must return this vector's length represented as a floating point number.
+// eg: foobar == fooBAR
 
-// Error must be within 1e-7.
+// If it is an odd number then 'round' it up to find which letters to uppercase. See example below.
 
-// Coordinates can be integers or floating point numbers.
+// sillycase("brian")  
+// //         --^-- midpoint  
+// //         bri    first half (lower-cased)  
+// //            AN second half (upper-cased)  
 
-function vectorLength(vector){
-    return Math.hypot(Math.abs(vector[0][0]-vector[1][0]), Math.abs(vector[0][1] - vector[1][1]))
+function sillycase(silly) {
+    return silly.substr(0,Math.ceil(silly.length/2)).toLowerCase() + silly.substr(Math.ceil(silly.length/2)).toUpperCase()
 }
