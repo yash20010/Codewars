@@ -1,15 +1,25 @@
-// Your job is to add a method 'sum' to all array objects, which sums all the numbers in it. You should return 0 if the array is empty.
+// Create a function that returns the values of an object which are numbers, and the keys of objects which have methods as values.
 
-// For example:
+// array should return numbers first then all the method names in the order they are in the object
+// strings, booleans, arrays should be ignored.
+// if the object is empty, then the array should return the following string: The Object is Empty
+// Example:
 
-// var arr = [1,2,3,4];
-// arr.sum();  //returns 10
+// returnSpecifics({a:1,b:'str',c:2,d:true,e:function(a){return a;},f:3})
+// This would return [1,2,3,'e']
 
-// var arr = [10, 28, 14, 33];
-// arr.sum(); //returns 85
-// Good luck!
-
-
-Object.prototype.sum = function() {
-  return this.reduce((a,c) => a+c, 0)
+function returnSpecifics(obj){
+  let arr = []
+  for(let keys in obj){
+    if(typeof obj[keys] === 'number'){
+      arr.push(obj[keys])
+    }
+  }
+  
+  for(let keys in obj){
+    if(typeof obj[keys] === 'function'){
+      arr.push(keys)
+    }
+  }
+  return arr.length < 1 ? ['The Object is Empty'] : arr
 }
