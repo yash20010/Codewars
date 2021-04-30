@@ -1,36 +1,32 @@
 // You will be given an array of objects representing data about developers who have signed up to attend the next coding meetup that you are organising.
 
-// Your task is to return an object which includes the count of food options selected by the developers on the meetup sign-up form..
-
-// For example, given the following input array:
+// Given the following input array:
 
 // var list1 = [
-//   { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'C',
-//     meal: 'vegetarian' },
-//   { firstName: 'Anna', lastName: 'R.', country: 'Liechtenstein', continent: 'Europe', age: 52, language: 'JavaScript',
-//     meal: 'standard' },
-//   { firstName: 'Ramona', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby',
-//     meal: 'vegan' },
-//   { firstName: 'George', lastName: 'B.', country: 'England', continent: 'Europe', age: 81, language: 'C',
-//     meal: 'vegetarian' },
+//   { firstName: 'Aba', lastName: 'N.', country: 'Ghana', continent: 'Africa', age: 21, language: 'Python' },
+//   { firstName: 'Abb', lastName: 'O.', country: 'Israel', continent: 'Asia', age: 39, language: 'Java' }
 // ];
-// your function should return the following object (the order of properties does not matter):
+// write a function that when executed as findOddNames(list1) returns only the developers where if you add the ASCII representation of all characters in their first names, the result will be an odd number:
 
-// { vegetarian: 2, standard: 1, vegan: 1 }
+// [
+//   { firstName: 'Abb', lastName: 'O.', country: 'Israel', continent: 'Asia', age: 39, language: 'Java' }
+// ]
+// Explanation of the above:
+
+// Sum of ASCII codes of letters in 'Aba' is: 65 + 98 + 97 = 260 which is an even number
+// Sum of ASCII codes of letters in 'Abb' is: 65 + 98 + 98 = 261 which is an odd number
 // Notes:
 
-// The order of the meals count in the object does not matter.
-// The count value should be a valid number.
-// The input array will always be valid and formatted as in the example above.
-// there are 5 possible meal options and the strings representing the selected meal option will always be formatted in the same way, as follows: 'standard', 'vegetarian', 'vegan', 'diabetic', 'gluten-intolerant'.
+// Preserve the order of the original list.
+// Return an empty array [] if there is no developer with an "odd" name.
+// The input array and first names will always be valid and formatted as in the example above.
 
-function orderFood(list) {
+
+
+
+// This kata is part of the Coding Meetup series which includes a number of short and easy to follow katas which have been designed to allow mastering the use of higher-order functions. In JavaScript this includes methods like: forEach, filter, map, reduce, some, every, find, findIndex. Other approaches to solving the katas are of course possible.
+
+function findOddNames(list) {
   // thank you for checking out the Coding Meetup kata :)
-  return list.reduce((a, c) => {
-    if (!(c.meal in a)) {
-      a[c.meal] = 0;
-    }
-    a[c.meal]++;
-    return a;
-  }, {});
+  return list.filter(o => (o.firstName.split('').reduce((a,c) => a + c.charCodeAt(),0))%2)
 }
