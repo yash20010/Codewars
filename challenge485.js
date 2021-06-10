@@ -1,15 +1,27 @@
-// In this Kata, you will be given a string and two indexes (a and b). Your task is to reverse the portion of that string between those two indices inclusive.
+// Count how often sign changes in array.
 
-// solve("codewars",1,5) = "cawedors" -- elements at index 1 to 5 inclusive are "odewa". So we reverse them.
-// solve("cODEWArs", 1,5) = "cAWEDOrs" -- to help visualize.
-// Input will be lowercase and uppercase letters only.
+// result
+// number from 0 to ... . Empty array returns 0
 
-// The first index a will always be lower that than the string length; the second index b can be greater than the string length. More examples in the test cases. Good luck!
+// example
+// const arr = [1, -3, -4, 0, 5];
 
-function solve(st, a, b) {
-    let sarr = st.split('')
-    let warr = sarr.splice(a, b - a + 1)
-    let str = warr.reverse().join('')
-    sarr.splice(a, 0, str)
-    return sarr.join('')
-}
+// /*
+// | elem | count |
+// |------|-------|
+// |  1   |  0    |
+// | -3   |  1    |
+// | -4   |  1    |
+// |  0   |  2    |
+// |  5   |  2    |
+// */
+
+// catchSignChange(arr) == 2;
+
+const catchSignChange = (arr) =>
+    arr.reduce(
+        (a, c, i, arr) =>
+            a +
+            ((c >= 0 && arr[i + 1] < 0) || (c < 0 && arr[i + 1] >= 0) ? 1 : 0),
+        0
+    )
