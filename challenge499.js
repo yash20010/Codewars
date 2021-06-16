@@ -14,9 +14,10 @@
 // addArrays(["a"],["b"]) // => ["ab"]
 
 function addArrays(array1, array2) {
-    return array1.length === array2.length
-        ? array1.map((e, i) => e + array2[i])
-        : new Error('Arrays are not equal in length')
+    if (array1.length !== array2.length) {
+        throw 'Arrays are not equal in length'
+    }
+    return array1.map((e, i) => e + array2[i])
 }
 
 console.log(addArrays(['a', 'b'], ['c', 'd']))
