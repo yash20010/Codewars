@@ -1,23 +1,23 @@
-// Task.
+// Build a function that will take the length of each side of a triangle and return if it's either an Equilateral, an Isosceles, a Scalene or an invalid triangle.
 
-// Calculate area of given triangle. Create a function t_area that will take a string which will represent triangle, find area of the triangle, one space will be equal to one length unit. The smallest triangle will have one length unit.
+// It has to return a string with the type of triangle.
+// For example:
 
-// Hints
+// typeOfTriangle(2,2,1) --> "Isosceles"
 
-// Ignore dots.
-
-// Example:
-
-// .
-// .      .
-// .      .       .      ---> should return 2.0
-
-// .
-// .      .
-// .      .       .
-// .      .       .      .      ---> should return 4.5
-
-function tArea(tStr) {
-    let arr = tStr.split('\n').slice(1, -1)
-    return 0.5 * (arr.length - 1) * ((arr.slice(-1)[0].length - 1) / 2)
+var typeOfTriangle = function (sideA, sideB, sideC) {
+    if (
+        sideA + sideB > sideC &&
+        sideA + sideC > sideB &&
+        sideB + sideC > sideA
+    ) {
+        if (sideA === sideB && sideB === sideC) {
+            return 'Equilateral'
+        } else if (sideA === sideB || sideB === sideC || sideC === sideA) {
+            return 'Isosceles'
+        } else {
+            return 'Scalene'
+        }
+    }
+    return 'Not a valid triangle'
 }
