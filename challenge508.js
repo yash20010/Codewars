@@ -18,3 +18,11 @@
 
 // Note: Do NOT round the ouput number
 // You do not have to verify if the input values are "proper", assume them to be non-zero integers
+
+function hypotenuse(a, b) {
+    return Math.hypot(a, b)
+}
+
+function leg(c, a) {
+    return Math.sqrt(c ** 2 - a ** 2)
+}
